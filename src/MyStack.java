@@ -78,7 +78,7 @@ public class MyStack<T>{
                 return this.items[i];
             }
         }
-        throw new StackEmptyException("There is now Object on the Index specified");
+        throw new StackEmptyException("There is now Object on the Index specified!");
     }
 
     /**

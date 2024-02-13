@@ -31,8 +31,6 @@ public class Main {
         //String Stack initialization
         MyStack<String> strings = new MyStack(5);
         try{
-            //This Line should cause an error Message !!!!!!!!!!!!!!!!!!!!!!!
-            //strings.peek();
             System.out.println("-----Filling the Array (push)-----");
             //filling the Stack with numbers 1 to 5
             for(int i = 0; i < strings.getItemsLength(); i++){
@@ -41,14 +39,32 @@ public class Main {
                 //printing the content of the Stack array
                 System.out.println(strings.list());
             }
-            //This Line should cause an error Message !!!!!!!!!!!!!!!!!!!!!!!
-            //strings.push("toMuch");
             //testing the stack methods
             Main.testStack(strings);
 
 
         } catch (StackFullException | StackEmptyException e){
             //displaying the error Message
+            System.err.println(e.getMessage());
+        }
+
+        System.out.println("\n------ExceptionTest------\n");
+
+        MyStack<Integer> testCaseOne = new MyStack(1);
+        try {
+            testCaseOne.peek();
+        }catch (StackEmptyException e){
+            System.err.println(e.getMessage());
+        }
+        try {
+            testCaseOne.pop();
+        }catch (StackEmptyException e){
+            System.err.println(e.getMessage());
+        }
+        try {
+            testCaseOne.push(1);
+            testCaseOne.push(2);
+        }catch (StackFullException e){
             System.err.println(e.getMessage());
         }
     }
