@@ -17,14 +17,26 @@ public class MyStack<T>{
         return this.items.length;
     }
 
+    /**
+     * Constractor with length
+     * @param fields defines the array length
+     */
     public MyStack(int fields){
         items = (T[]) new Object[fields];
     }
 
+    /**
+     * Constractor without length
+     */
     public MyStack(){
         this(1);
     }
 
+    /**
+     * This method pushes an item into the Stack array
+     * @param item defines the item that should be pushed into the array
+     * @throws StackFullException gets thrown when the Stack is full already
+     */
     public void push(T item) throws StackFullException {
         boolean ifFilled = false;
         for(int i = 0; i < this.items.length; i++){
@@ -39,6 +51,11 @@ public class MyStack<T>{
         }
     }
 
+    /**
+     * This method returns the last added item and deletes is out of the array
+     * @return the last added item
+     * @throws StackEmptyException gets thrown when there is no item to be returned
+     */
     public T pop() throws StackEmptyException{
         for(int i = this.items.length-1; i > 0; i--){
             if(this.items[i] != null){
@@ -50,6 +67,11 @@ public class MyStack<T>{
         throw new StackEmptyException("The Stack is empty nothing can be returned!");
     }
 
+    /**
+     * Returns the last added element of the array
+     * @return the last added element
+     * @throws StackEmptyException gets thrown when the array is empty
+     */
     public T peek() throws StackEmptyException {
         for(int i = this.items.length-1; i > 0; i--){
             if(this.items[i] != null){
@@ -59,6 +81,10 @@ public class MyStack<T>{
         throw new StackEmptyException("There is now Object on the Index specified");
     }
 
+    /**
+     * Displays the content of the array
+     * @return the content of the array
+     */
     public String list(){
         String ausgabe = "";
         for(int i = 0; i < this.items.length-1; i++){
